@@ -28,9 +28,9 @@ unsigned short Blue = 0;
 
 void setup() {
     DigiUSB.begin();
-    pinMode(0,OUTPUT);
-    pinMode(1,OUTPUT);
-    pinMode(2,OUTPUT);
+    pinMode(PIN_GREEN,OUTPUT);
+    pinMode(PIN_RED,OUTPUT);
+    pinMode(PIN_BLUE,OUTPUT);
 }
 
 void readColorsFromUSB() {
@@ -144,5 +144,4 @@ void loop() {
     else {
         displaySolidLED();
     }
-
 }

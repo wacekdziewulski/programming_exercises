@@ -38,33 +38,14 @@ if __name__ == "__main__":
 
     import sys
     import time
-    import webcolors
+#    import webcolors
 
-    if len(sys.argv)<3:
-        color_list = webcolors.name_to_rgb(sys.argv[1].lower())
-        color_list = list(color_list)
-        color_list.insert(0, 0)
-    else:
-        color_list = sys.argv
-
-
-
-
-   # while 1:
-        #pin = int(pin)
-
-
-
-        #if output == "\r":
-        #    print line
-        #    line =""
-        #else:
-        #    line += output
-        #else:
-    
-        #    print "Pin response didn't match."
-
-    #byte val = sys.argv[1]
+#    if len(sys.argv)<3:
+#        color_list = webcolors.name_to_rgb(sys.argv[1].lower())
+#        color_list = list(color_list)
+#        color_list.insert(0, 0)
+#    else:
+    color_list = sys.argv
     print color_list
 
     theDevice.write(ord("f"))
