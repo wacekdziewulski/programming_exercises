@@ -27,28 +27,29 @@ Node* allocateNode(int value) {
 
 /* @return -> indicates if the addition of the node was successful */
 bool addNode(Node* root, int value) {
-    Node** currentNode = &root;
+    Node* currentNode = root;
     Node* newNode = allocateNode(value);
+
     if (!newNode) {
         return false;
     }
 
     while (1) {
-        if (!*currentNode) {
-            *currentNode = newNode;
+        if (!currentNode) {
+            *currentNode = *newNode;
             break;
         }
-        else if (*currentNode->value < value) {
-            if (!*currentNode->left) {
-                *currentNode->left = newNode;
+        else if (currentNode->value < value) {
+            if (!currentNode->left) {
+                currentNode->left = newNode;
             }
-            *currentNode = *currentNode->left;
+            currentNode = currentNode->left;
         }
         else {// (root->value >= value) {
-            if (!*currentNode->right) {
-                *currentNode->right = newNode;
+            if (currentNode->right) {
+                currentNode->right = newNode;
             }
-            *currentNode = *currentNode->right;
+            currentNode = currentNode->right;
         }
     }
 
@@ -70,7 +71,7 @@ void dfs(Node* node, void (action)(Node*)) {
 }
 
 int main (char** argv, int argc) {
-    Node* tree;
+    Node* tree = NULL;
     addNode(tree, 3);
     addNode(tree, 1);
     addNode(tree, 2);
