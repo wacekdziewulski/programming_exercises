@@ -26,34 +26,52 @@ Node* allocateNode(int value) {
 }
 
 /* @return -> indicates if the addition of the node was successful */
-bool addNode(Node* root, int value) {
-    Node* currentNode = root;
+bool addNode(Node** root, int value) {
+
+    Node** currentNode = root;
+    Node* originalRoot = *root;
     Node* newNode = allocateNode(value);
 
     if (!newNode) {
         return false;
     }
 
+    bool rootAdded = false;
+
     while (1) {
-        if (!currentNode) {
-            *currentNode = *newNode;
+        if (!*currentNode) {
+            *currentNode = newNode;
+            rootAdded = true;
             break;
         }
-        else if (currentNode->value < value) {
-            if (!currentNode->left) {
-                currentNode->left = newNode;
+        else if ((*currentNode)->value < value) {
+            if (!(*currentNode)->left) {
+                (*currentNode)->left = newNode;
+                break;
             }
-            currentNode = currentNode->left;
+            else {
+                *currentNode = (*currentNode)->left;
+            }
         }
         else {// (root->value >= value) {
-            if (currentNode->right) {
-                currentNode->right = newNode;
+            if (!(*currentNode)->right) {
+                (*currentNode)->right = newNode;
+                break;
             }
-            currentNode = currentNode->right;
+            else {
+                *currentNode = (*currentNode)->right;
+            }
         }
     }
 
+    if (!rootAdded) {
+        *root = originalRoot;
+    }
+
     return true;
+}
+
+bool addNodeInternal(Node** node, int value) {
 }
 
 void dfs(Node* node, void (action)(Node*)) {
@@ -72,12 +90,12 @@ void dfs(Node* node, void (action)(Node*)) {
 
 int main (char** argv, int argc) {
     Node* tree = NULL;
-    addNode(tree, 3);
-    addNode(tree, 1);
-    addNode(tree, 2);
-    addNode(tree, 5);
-    addNode(tree, 4);
-    addNode(tree, 6);
+    addNode(&tree, 3);
+    addNode(&tree, 1);
+    addNode(&tree, 2);
+    addNode(&tree, 5);
+    addNode(&tree, 4);
+    addNode(&tree, 6);
     dfs(tree, &printNodeValue);
 
     return 0;
