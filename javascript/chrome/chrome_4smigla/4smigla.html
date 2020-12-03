@@ -1,0 +1,32 @@
+<!doctype html>
+<!--
+ This page is shown when the extension button is clicked, because the
+ "browser_action" field in manifest.json contains the "default_popup" key with
+ value "popup.html".
+ -->
+<html>
+  <head>
+    <title>4Śmigła Affiliate</title>
+    <style>
+      body {
+        font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+      }
+    </style>
+
+    <!--
+      - JavaScript and HTML must be in separate files: see our Content Security
+      - Policy documentation[1] for details and explanation.
+      -
+      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
+     -->
+    <script src="4smigla.js"></script>
+  </head>
+  <body>
+    <div id="main" style="width: 570px; height: 50px">
+        <img id="logo" style="display: none; position: absolute; left: 0px; top: 0px"><br/>
+        <div id="short_link" style="display: none; position: absolute; left: 75px; top: 15px; font-size:18pt"></div><br />
+        <img id="arrow" src="img/arrow.png" width="10" height="10" style="position: absolute; left: 280px; top: 50px;" />
+        <div id="link" style="display: none; position: absolute; left: 0px; top: 70px; font-style: italic; font-size:10pt"></div><br/>
+    </div>
+  </body>
+</html>
