@@ -1,6 +1,6 @@
-package pathfinding.level;
+package pathfinding.level.tile;
 
-public class FloorTile implements Tile {
+public class FloorTile extends Tile {
     @Override
     public boolean isWalkable() {
         return true;
@@ -8,6 +8,6 @@ public class FloorTile implements Tile {
 
     @Override
     public String toString() {
-        return "Floor";
+        return "Floor(" + node.toString() + ")";
     }
 }

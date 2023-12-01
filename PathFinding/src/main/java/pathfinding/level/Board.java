@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class Board<T> {
-    private List<List<T>> elements = new ArrayList<>();
+    protected List<List<T>> elements = new ArrayList<>();
 
     public void addRow(List<T> row) {
         elements.add(row);
@@ -31,4 +31,5 @@ public class Board<T> {
         }
         return output;
     }
+
 }

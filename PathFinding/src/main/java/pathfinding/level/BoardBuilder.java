@@ -5,8 +5,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class BoardBuilder {
-    public static Board<Tile> fromFile(String filename) {
-        Board<Tile> board = new Board<>();
+    public static TileBoard fromFile(String filename) {
+        TileBoard board = new TileBoard();
         try {
             Files.lines(Path.of(filename))
                     .map(String::chars)
